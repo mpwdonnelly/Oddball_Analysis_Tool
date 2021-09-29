@@ -26,26 +26,20 @@ function makeRectangle() {
 }
 
 function makeGraph() {
-
-    console.log(test01[0].microvolts);
-
+    
     var dataset2 = [];
+    var xValArrayMaxMin = [];
+    var yValArrayMaxMin = []
 
     for (let i = 0; i < test01.length; i++) {
-        console.log(test01[i].microvolts);
-        var dataArray = [test01[i].ms, test01[i].microvolts];
+        //console.log(test01[i].microvolts);
+        var dataArray = [parseFloat(test01[i].ms), parseFloat(test01[i].microvolts)];
+        xValArrayMaxMin.push(parseFloat(test01[i].ms));
+        yValArrayMaxMin.push(parseFloat(test01[i].microvolts));
         dataset2.push(dataArray);
     }
-    console.log(dataset2);
-
-    // Step 1
-    var dataset1 = [
-        [1,1], [12,20], [24,36],
-        [32, 50], [40, 70], [50, 100],
-        [55, 106], [65, 123], [73, 130],
-        [78, 134], [83, 136], [89, 138],
-        [100, 140]
-    ];
+    
+    
 
     // Step 3
     var svg = d3.select("svg"),
@@ -54,8 +48,8 @@ function makeGraph() {
         height = svg.attr("height") - margin //200
 
     // Step 4 
-    var xScale = d3.scaleLinear().domain([0.000001, 0.0015]).range([0, width]),
-        yScale = d3.scaleLinear().domain([0, 20]).range([height, 0]);
+    var xScale = d3.scaleLinear().domain([d3.min(xValArrayMaxMin), d3.max(xValArrayMaxMin)]).range([0, width]),
+        yScale = d3.scaleLinear().domain([d3.min(yValArrayMaxMin), d3.max(yValArrayMaxMin)]).range([height, 0]);
         
     var g = svg.append("g")
         .attr("transform", "translate(" + 100 + "," + 100 + ")");
@@ -128,7 +122,7 @@ function makeGraph() {
 function parseCSV() {
     d3.csv("Dummy.csv",).then(function(data) {
         for (var i = 0; i < data.length; i++){
-            console.log(data[i]);
+            //console.log(data[i]);
             test01.push(data[i]);
         }
     });
