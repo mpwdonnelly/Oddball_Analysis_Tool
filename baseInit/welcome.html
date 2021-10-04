@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+</head>
+<body>
+<h1>Event-Related Potential (ERP) Calculator Tool</h1>
+<h2>Introduction</h2>
+<p>Users can run this tool to analyse EEG data collected after they have
+    performed
+    the Oddball Experiment. In this experiment, a subject has been prepped to
+    collect
+    scalp voltages from one location (on the midline, just behind the top of the
+    head)
+    with ground and reference (the black and white wires, respectively) attached
+    to the mastoids (located just behind each ear).
+</p>
+<h2>How the Entire Process Works</h2>
+<p>First, run the experiment using the correct experiment program on the
+    stimulus
+    computer. This is the one displaying Xs and Os while the subject watches.
+    While
+    the subject views these images, the other computer (The Acquisition
+    Computer) is
+    connected to the amplifier (Blue Box) and should show a scrolling jaggedy
+    line
+    representing the voltages measured moment-by-moment on the subject's
+    scalp.</p>
+<p>Once the process is completed, the experimenter should wait until the
+    acquisition
+    computer stops recording, then in the interface window, pull down the File
+    menu and
+    select "Save As..." and choose to save the file as a comma-delimited text
+    file (.csv).</p>
+<p>Then, the experimenter should find the file on the computer and copy it to a
+    thumb
+    drive and save it using a name that is easy to remember. Information about
+    what is
+    in the data file should be right in the name (example:
+    "JohnDoeOddballEEGdata"</p>
+<p>Finally, subjects should bring that file to a computer running this app, and
+    make it so that the file can be found and opened.</p>
+<h2>When you are ready to analyze the data</h2>
+<ol>
+    <li>Click the button below that says "Ready"</li>
+    <li>In the next window, click the button "Open Data File"</li>
+    <li>Navigate to the file and click to open it.</li>
+    <li>Verify that you have selected the correct file.</li>
+    <li>Click "See the Results" button.</li>
+</ol>
+<button onclick="window.location.href='filePicker.html'">Ready</button>
+<button onclick="window.location.href='oldDataView.html'">Open Old Data</button>
+<button onclick="window.close()">Quit</button>
+<button onclick="window.location.href='oldHTML.html'">Archived Page</button>
+
+</body>
+</html>
