@@ -32,7 +32,6 @@ document.querySelectorAll(".drop-zone_input").forEach(inputElement => {
             updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
         }
         dropZoneElement.classList.remove("drop-zone-over");
-
     });
 });
 
