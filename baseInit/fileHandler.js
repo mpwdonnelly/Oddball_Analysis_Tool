@@ -56,7 +56,6 @@ function updateThumbnail(dropZoneElement, file) {
 
     //Read text files
         const reader = new FileReader();
-
         reader.readAsText(file);
         reader.onload = function (e) {
             //Displays contents of text file
