@@ -77,7 +77,7 @@ function updateThumbnail(dropZoneElement, file) {
     //     thumbnailElement.style.backgroundImage = null;
     // }
 
-}
+} //End of updateThumbnail
 
 async function button() {
     let [fileHandle] = await window.showOpenFilePicker();
