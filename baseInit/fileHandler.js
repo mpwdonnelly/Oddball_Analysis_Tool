@@ -61,7 +61,6 @@ function updateThumbnail(dropZoneElement, file) {
         reader.onload = function (e) {
             //Displays contents of text file
             console.log(e.target.result);
-            
         };
 
     // //Show thumbnail for text files
