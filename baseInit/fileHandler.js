@@ -54,17 +54,30 @@ function updateThumbnail(dropZoneElement, file) {
 
     thumbnailElement.dataset.label = file.name;
 
-    //Show thumbnail for text files
-    if (file.type.startsWith("text/")) {
+    //Read text files
         const reader = new FileReader();
 
-        reader.readAsDataURL(file);
-        reader.onload = () => {
-            thumbnailElement.style.backgroundImage = `url('${ reader.result }')`;
+        reader.readAsText(file);
+        reader.onload = function (e) {
+            //Displays contents of text file
+            console.log(e.target.result);
+            
         };
-    } else {
-        thumbnailElement.style.backgroundImage = null;
-    }
+
+    // //Show thumbnail for text files
+    // if (file.type.startsWith("text/")) {
+    //     var file = e.dataTransfer.files[0];
+    //     const reader = new FileReader();
+
+    //     reader.readAsDataURL(file);
+    //     reader.onload = () => {
+    //         thumbnailElement.style.backgroundImage = `url('${ reader.result }')`;
+            
+    //     };
+    // } else {
+    //     thumbnailElement.style.backgroundImage = null;
+    // }
+
 }
 
 async function button() {
