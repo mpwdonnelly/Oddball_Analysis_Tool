@@ -39,6 +39,8 @@ document.querySelectorAll(".drop-zone_input").forEach(inputElement => {
 function updateThumbnail(dropZoneElement, file) {
 
     let thumbnailElement = dropZoneElement.querySelector(".drop-zone_thumbnail");
+    // Create headers for csv string data
+    var csvDataDragAndDrop = "microvolts,trialstart,oddball\n";
 
     //Remove prompt if there is a thumbnail
     if (dropZoneElement.querySelector(".drop-zone_prompt")) {
@@ -59,7 +61,9 @@ function updateThumbnail(dropZoneElement, file) {
         reader.readAsText(file);
         reader.onload = function (e) {
             //Displays contents of text file
-            console.log(e.target.result);
+            csvDataDragAndDrop += e.target.result;   // Add file contents to csvDataDragAndDrop
+            localStorage.setItem("csvData:fileHandler.js", csvDataDragAndDrop);   // Store the csv String in local storage to grab in another page
+            console.log(csvDataDragAndDrop);
         };
 
     // //Show thumbnail for text files
@@ -79,8 +83,15 @@ function updateThumbnail(dropZoneElement, file) {
 } //End of updateThumbnail
 
 async function button() {
+    // FILE PICKER BUTTON
+    // Create headers for csv string data
+    var csvDataFilePicker = "microvolts,trialstart,oddball\n"
     let [fileHandle] = await window.showOpenFilePicker();
     let fileData = await fileHandle.getFile();
     let text = await fileData.text();
-    console.log(text);
+    // Add file contents to csvDataFilePicker
+    csvDataFilePicker += text;
+    // Store the csv String in local storage to grab in another page
+    localStorage.setItem("csvData:fileHandler.js", csvDataFilePicker);
+    console.log(csvDataFilePicker);
 }

@@ -7,7 +7,9 @@ function init() {
     console.log("Element text detected: " + testE);
 };
 
-var mainDataset = [];
+
+var uploadedCsvData = localStorage.getItem("csvData:fileHandler.js");  // Data that was uploaded from a csv into filePicker.html. 
+var mainDataset = [];                                                  // String data was stored in local storage in fileHandler.js and then grabbed in this js file to parse.
 
 
 
@@ -282,11 +284,9 @@ function makeGraph() {
 
 function parseCSV() {
 
-    d3.csv("Budd01Oddball.csv",).then(function(data) {
-        for (var i = 0; i < data.length; i++){
-            mainDataset.push(data[i]);
-        }
-    });
+    // Use d3.csvParse to parse the uploadedCsvData String to put into arrays for maindataset
+    mainDataset = d3.csvParse(uploadedCsvData);
+    
 
 }
 
