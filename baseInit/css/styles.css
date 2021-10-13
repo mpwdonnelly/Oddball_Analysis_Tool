@@ -1,0 +1,97 @@
+/*FILE PICKER CSS */
+.drop-zone {
+    max-width: 200px;
+    height: 190px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    cursor: pointer;
+    color: #ccc;
+    border: 4px dashed #8D918D;
+    border-radius: 10px;
+}
+
+.drop-zone-over {
+    border-style: dotted;
+}
+
+.drop-zone_input {
+    display: none;
+}
+
+.drop-zone_thumbnail {
+    width: 95%;
+    height: 95%;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #8D918D;
+    background-size: cover;
+    position: relative;
+}
+
+.drop-zone_thumbnail::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 5px 0;
+    color: #FAEBD7;
+    background: rgba(0, 0, 0, 0.75);
+    font-size: 14px;
+    text-align: center;
+}
+
+/* SPLASH PAGE CSS */
+
+/*Mobile first - default CSS will apply to devices
+whose viewport is 767px or less */
+
+.splash h1 {
+    color: #000;
+    text-align: center;
+    
+    border: 2px solid red;
+    margin: 300px 123px 0px;
+    font-size: 48px;
+    
+}
+
+.splash h1:hover {
+    color: #3A3B3C;
+    cursor: pointer;
+}
+
+
+/* Break point for standard tablet size */
+@media screen and (min-width: 50rem) {
+    .splash h1 {
+        font-size: 64px;
+        
+        margin: 300px 267px 0px;
+        
+    }
+
+
+} /*End of tablet size breakpoint */
+
+
+/* Break point for standard desktop size */
+@media screen and (min-width: 63rem) {
+
+    .splash h1 {
+        font-size: 72px;
+        margin: 300px 355px 0px;
+    }
+
+   /* .splash p {
+        font-size: 20px;
+        text-align: center;
+    
+    }*/
+    
+} /*End of desktop size breakpoint */
