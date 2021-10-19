@@ -1,4 +1,10 @@
 /********************************************/
+/*** Mobile first - default CSS will apply to 
+  devices whose viewport is 767px or less ***/
+/********************************************/
+
+
+/********************************************/
 /************** FILE PICKER CSS *************/
 /********************************************/
 .drop-zone {
@@ -48,7 +54,15 @@
     text-align: center;
 }
 
-#filePickerNav {
+/********************************************/
+/************* NAVIGATION CSS *************/
+/********************************************/
+
+#topNav {
+    text-align: center;
+}
+
+#topNav ul{
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -56,11 +70,16 @@
     background-color: #333;
 }
 
-#filePickerNav li {
-    float: left;
+#topNav li {
+    text-align: center;
+    border-bottom: 1px solid #bbb;
 }
 
-#filePickerNav li a {
+#topNav li:last-child {
+    border-bottom: none;
+}
+
+#topNav li a {
     display: block;
     color: #FFF;
     padding: 8px;
@@ -69,92 +88,7 @@
     text-decoration: none;
 }
 
-#filePickerNav li a:hover {
-    background-color: #111;
-}
-
-/********************************************/
-/************* WELCOME PAGE CSS *************/
-/********************************************/
-#welcomeNav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
-
-#welcomeNav li {
-    float: left;
-}
-
-#welcomeNav li a {
-    display: block;
-    color: #FFF;
-    padding: 8px;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-#welcomeNav li a:hover {
-    background-color: #111;
-}
-
-/********************************************/
-/************ OLD DATA PAGE CSS *************/
-/********************************************/
-#oldDataNav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
-
-#oldDataNav li {
-    float: left;
-}
-
-#oldDataNav li a {
-    display: block;
-    color: #FFF;
-    padding: 8px;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-#oldDataNav li a:hover {
-    background-color: #111;
-}
-
-/********************************************/
-/************* ARCHIVE PAGE CSS *************/
-/********************************************/
-
-#archiveNav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
-
-#archiveNav li {
-    float: left;
-}
-
-#archiveNav li a {
-    display: block;
-    color: #FFF;
-    padding: 8px;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-#archiveNav li a:hover {
+#topNav li a:hover {
     background-color: #111;
 }
 
@@ -167,14 +101,6 @@
 /************* SPLASH PAGE CSS **************/
 /********************************************/
 
-/********************************************/
-/********* START OF MEDIA QUERY CSS *********/
-/********************************************/
-
-/********************************************/
-/*** Mobile first - default CSS will apply to 
-  devices whose viewport is 767px or less ***/
-/********************************************/
 #splash h1 {
     color: #000;
     text-align: center;
@@ -189,22 +115,33 @@
     cursor: pointer;
 }
 
-/* Break point for standard tablet size */
+/***************************************************/
+/******  Break point for standard tablet size ******/
+/***************************************************/
 @media screen and (min-width: 50rem) {
     #splash h1 {
         font-size: 64px;
-
         margin: 300px 267px 0px;
 
     }
+    
+    #topNav li {
+        float: left;
+        border-bottom: none;
+        border-right: 1px solid #bbb;  
+    }
+    
+    #topNav li:last-child {
+        border-right: none;
+    }
+    
+
+}/*End of tablet size breakpoint */
 
 
-}
-
-/*End of tablet size breakpoint */
-
-
-/* Break point for standard desktop size */
+/***************************************************/
+/****** Break point for standard desktop size ******/
+/***************************************************/
 @media screen and (min-width: 63rem) {
 
     #splash h1 {
@@ -212,6 +149,7 @@
         margin: 300px 355px 0px;
     }
 
-}
+    
+    
 
-/*End of desktop size breakpoint */
+} /*End of desktop size breakpoint */
