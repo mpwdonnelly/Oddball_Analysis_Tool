@@ -15,7 +15,7 @@ document.querySelectorAll(".drop-zone_input").forEach(inputElement => {
     dropZoneElement.addEventListener("dragover", e => {
         e.preventDefault();
         dropZoneElement.classList.add("drop-zone-over");
-        
+
     });
 
     ["dragleave", "dragend"].forEach(type => {
@@ -57,28 +57,14 @@ function updateThumbnail(dropZoneElement, file) {
     thumbnailElement.dataset.label = file.name;
 
     //Read text files
-        const reader = new FileReader();
-        reader.readAsText(file);
-        reader.onload = function (e) {
-            //Displays contents of text file
-            csvDataDragAndDrop += e.target.result;   // Add file contents to csvDataDragAndDrop
-            localStorage.setItem("csvData:fileHandler.js", csvDataDragAndDrop);   // Store the csv String in local storage to grab in another page
-            console.log(csvDataDragAndDrop);
-        };
-
-    // //Show thumbnail for text files
-    // if (file.type.startsWith("text/")) {
-    //     var file = e.dataTransfer.files[0];
-    //     const reader = new FileReader();
-
-    //     reader.readAsDataURL(file);
-    //     reader.onload = () => {
-    //         thumbnailElement.style.backgroundImage = `url('${ reader.result }')`;
-            
-    //     };
-    // } else {
-    //     thumbnailElement.style.backgroundImage = null;
-    // }
+    const reader = new FileReader();
+    reader.readAsText(file);
+    reader.onload = function (e) {
+        //Displays contents of text file
+        csvDataDragAndDrop += e.target.result; // Add file contents to csvDataDragAndDrop
+        localStorage.setItem("csvData:fileHandler.js", csvDataDragAndDrop); // Store the csv String in local storage to grab in another page
+        console.log(csvDataDragAndDrop);
+    };
 
 } //End of updateThumbnail
 
