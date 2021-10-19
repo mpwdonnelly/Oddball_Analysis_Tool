@@ -23,16 +23,18 @@
             </ul>
         </nav>
 
-        <h2>Introduction</h2>
-        <p>Users can run this tool to analyse EEG data collected after they have
-            performed
-            the Oddball Experiment. In this experiment, a subject has been prepped to
-            collect
-            scalp voltages from one location (on the midline, just behind the top of the
-            head)
-            with ground and reference (the black and white wires, respectively) attached
-            to the mastoids (located just behind each ear).
-        </p>
+        <div id="introText">
+            <h2>Introduction</h2>
+            <p>Users can run this tool to analyse EEG data collected after they have
+                performed
+                the Oddball Experiment. In this experiment, a subject has been prepped to
+                collect
+                scalp voltages from one location (on the midline, just behind the top of the
+                head)
+                with ground and reference (the black and white wires, respectively) attached
+                to the mastoids (located just behind each ear).
+            </p>
+        </div>
 
         <div id="proccessInfo">
             <h2>How the Entire Process Works</h2>
@@ -51,7 +53,7 @@
                 USB drive and save it using a name that is easy to remember. Information about
                 what is in the data file should be right in the name </p>
 
-            <p>example:"JohnDoeOddballEEGdata"</p>
+            <p>e.g.:"JohnDoeOddballEEGdata"</p>
 
             <p>Finally, subjects should bring that file to a computer running this app, and
                 make it so that the file can be found and opened.</p>
@@ -59,20 +61,19 @@
 
         <div id="analyzeData">
             <h2>When you are ready to analyze the data</h2>
+            <ol>
+                <li>Click the button below that says "Ready"</li>
+                <li>In the next window, click the button "Open Data File"</li>
+                <li>Navigate to the file and click to open it.</li>
+                <li>Verify that you have selected the correct file.</li>
+                <li>Click "See the Results" button.</li>
+            </ol>
+            <button onclick="window.location.href='filePicker.html'">Ready</button>
+            <button onclick="window.close()">Quit</button>
+
         </div>
 
-        <ol>
-            <li>Click the button below that says "Ready"</li>
-            <li>In the next window, click the button "Open Data File"</li>
-            <li>Navigate to the file and click to open it.</li>
-            <li>Verify that you have selected the correct file.</li>
-            <li>Click "See the Results" button.</li>
-        </ol>
-        <button onclick="window.location.href='filePicker.html'">Ready</button>
-        <button onclick="window.close()">Quit</button>
-
-    </div>
-    <!--End of welcome id-->
+    </div><!--End of welcome id-->
 
 </body>
 
