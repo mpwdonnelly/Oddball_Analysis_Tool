@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    
+
     <title>Choose a file for analysis</title>
     <!--<script src="http://d3js.org/d3.v3.min.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.min.js"></script>
@@ -12,19 +12,31 @@
 </head>
 
 <body>
-    <h1>Choose File</h1>
+    <div id="filePicker">
+        <h1>Choose File</h1>
+        <ul id="filePickerNav">
+            <li><a href="welcome.html">Home</a></li>
+            <li><a class="active" href="filePicker.html">Analyze Data</a></li>
+            <li><a href="oldDataView.html">Open Old Data</a></li>
+            <li><a href="oldHTML.html">Archived Page</a></li>
+        </ul>
 
-    <div class="drop-zone">
-        <span class="drop-zone_prompt">Drop file here or click to upload.</span>
-        <input type="file" name="dropFile" class="drop-zone_input" multiple>
+        <br>
+        <div class="drop-zone">
+            <span class="drop-zone_prompt">Drop file here or click to upload.</span>
+            <input type="file" name="dropFile" class="drop-zone_input" multiple>
+        </div>
+
+        <br>
+        <button id="csvTest" onclick="parseCSV()">READ FILE</button>
+        <button id="makeRect" onclick="analyzeAndSeperateData()">MAKE A GRAPH</button>
+        <p></p>
+        <svg width="800" height="700"></svg>
+
     </div>
-    <button id="csvTest" onclick="parseCSV()">READ IN CSV FILE</button>
-    <button id="makeRect" onclick="analyzeAndSeperateData()">MAKE A GRAPH</button>
-    <p></p>
-    <svg width="800" height="700"></svg>
     <script src="d3.js"></script>
     <script src="js/fileHandler.js"></script>
-    
+
 </body>
 
 

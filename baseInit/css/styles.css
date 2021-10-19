@@ -1,4 +1,6 @@
-/*FILE PICKER CSS */
+/********************************************/
+/************** FILE PICKER CSS *************/
+/********************************************/
 .drop-zone {
     max-width: 200px;
     height: 190px;
@@ -46,51 +48,170 @@
     text-align: center;
 }
 
-/* SPLASH PAGE CSS */
-
-/*Mobile first - default CSS will apply to devices
-whose viewport is 767px or less */
-
-.splash h1 {
-    color: #000;
-    text-align: center;
-    
-    margin: 300px 123px 0px;
-    font-size: 48px;
-    
+#filePickerNav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
 }
 
-.splash h1:hover {
+#filePickerNav li {
+    float: left;
+}
+
+#filePickerNav li a {
+    display: block;
+    color: #FFF;
+    padding: 8px;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#filePickerNav li a:hover {
+    background-color: #111;
+}
+
+/********************************************/
+/************* WELCOME PAGE CSS *************/
+/********************************************/
+#welcomeNav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+#welcomeNav li {
+    float: left;
+}
+
+#welcomeNav li a {
+    display: block;
+    color: #FFF;
+    padding: 8px;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#welcomeNav li a:hover {
+    background-color: #111;
+}
+
+/********************************************/
+/************ OLD DATA PAGE CSS *************/
+/********************************************/
+#oldDataNav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+#oldDataNav li {
+    float: left;
+}
+
+#oldDataNav li a {
+    display: block;
+    color: #FFF;
+    padding: 8px;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#oldDataNav li a:hover {
+    background-color: #111;
+}
+
+/********************************************/
+/************* ARCHIVE PAGE CSS *************/
+/********************************************/
+
+#archiveNav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+#archiveNav li {
+    float: left;
+}
+
+#archiveNav li a {
+    display: block;
+    color: #FFF;
+    padding: 8px;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#archiveNav li a:hover {
+    background-color: #111;
+}
+
+.active {
+    background-color: #04AA6D;
+}
+
+
+/********************************************/
+/************* SPLASH PAGE CSS **************/
+/********************************************/
+
+/********************************************/
+/********* START OF MEDIA QUERY CSS *********/
+/********************************************/
+
+/********************************************/
+/*** Mobile first - default CSS will apply to 
+  devices whose viewport is 767px or less ***/
+/********************************************/
+#splash h1 {
+    color: #000;
+    text-align: center;
+
+    margin: 300px 123px 0px;
+    font-size: 48px;
+
+}
+
+#splash h1:hover {
     color: #3A3B3C;
     cursor: pointer;
 }
 
-
 /* Break point for standard tablet size */
 @media screen and (min-width: 50rem) {
-    .splash h1 {
+    #splash h1 {
         font-size: 64px;
-        
+
         margin: 300px 267px 0px;
-        
+
     }
 
 
-} /*End of tablet size breakpoint */
+}
+
+/*End of tablet size breakpoint */
 
 
 /* Break point for standard desktop size */
 @media screen and (min-width: 63rem) {
 
-    .splash h1 {
+    #splash h1 {
         font-size: 72px;
         margin: 300px 355px 0px;
     }
 
-   /* .splash p {
-        font-size: 20px;
-        text-align: center;
-    
-    }*/
-    
-} /*End of desktop size breakpoint */
+}
+
+/*End of desktop size breakpoint */
