@@ -31,10 +31,16 @@
         </div>
 
         <br>
-        <button id="csvTest" onclick="parseCSV()">READ FILE</button>
-        <button id="makeRect" onclick="analyzeAndSeperateData()">MAKE A GRAPH</button>
+        <button id="csvTest" onclick="parseCSV()">READ IN CSV FILE</button>
+        <button id="makeRect" onclick="rawDataGraph()">Click to see Raw Data</button>
+        <button id="makeRect" onclick="drawAveragedGraph()">Click to average data</button>
+        <button id="makeRect" onclick="drawGraphBaseLine()">Click for average with Baseline</button>
+        <button id="makeRect" onclick="drawGraphMovingAverage()">Click for Moving Average with Baseline</button>
         <p></p>
-        <svg width="800" height="700"></svg>
+        <svg id="graphRaw" width="800" height="700"></svg>
+        <svg id="graph" width="800" height="700"></svg>
+        <svg id="graph2" width="800" height="700"></svg>
+        <svg id="graph3" width="800" height="700"></svg>
 
     </div>
     <script src="d3.js"></script>
