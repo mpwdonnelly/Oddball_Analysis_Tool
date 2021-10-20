@@ -1,5 +1,5 @@
 module.exports = app => {
-    const datasets = require("../controllers/customer.controller.js");
+    const datasets = require("../controllers/data.controller.js");
   
     // Create single entry [WORKING - NEED TO MODIFY]
     app.post("/datasets", datasets.create);

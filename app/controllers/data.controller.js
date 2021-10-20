@@ -1,4 +1,4 @@
-const Dataset = require("../models/customer.model.js");
+const Dataset = require("../models/data.model.js");
 
 // Create and Save a datarow
 exports.create = (req, res) => {
