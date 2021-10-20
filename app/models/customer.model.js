@@ -8,9 +8,8 @@ const Dataset = function(dataset) {
   this.flag = dataset.flag;
 };
 
-Dataset.create = ([dataset], result) => {
-  sql.query("microvolts = ?, trialstart = ?, oddball = ?", 
-  [dataset.microvolts, dataset.trialstart, dataset.oddball], (err, res) => {
+Dataset.create = (newData, result) => {
+  sql.query("INSERT INTO data SET ?", newData, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -18,9 +17,25 @@ Dataset.create = ([dataset], result) => {
     }
 
     console.log("created datarow: ", { id: res.insertId, ...newData });
-    result(null, { ID: res.insertId, ...newData });
+    result(null, { id: res.insertId, ...newData });
   });
 };
+
+//   var flag = "test1";
+//   var jsondata = req.body;
+//   var values = [];
+
+//   for(var i=0; i< jsondata.length; i++)
+//   values.push([jsondata[i].microvolts,jsondata[i].trialstart,jsonData[i].oddball, flag]);
+//   sql.query('INSERT INTO data (microvolts, trialstart, oddball, flag) VALUES ?', [values], function(err,result) {
+//     if(err) {
+//        result.send('Error');
+//     }
+//    else {
+//       result.send('Success');
+//     }
+//   });
+// };
 
 Dataset.findByFlag = (datasetFlag, result) => {
   sql.query(`SELECT * FROM data WHERE flag = ${datasetFlag}`, (err, res) => {
