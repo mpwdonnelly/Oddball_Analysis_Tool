@@ -63,7 +63,13 @@ function updateThumbnail(dropZoneElement, file) {
         //Displays contents of text file
         csvDataDragAndDrop += e.target.result; // Add file contents to csvDataDragAndDrop
         localStorage.setItem("csvData:fileHandler.js", csvDataDragAndDrop); // Store the csv String in local storage to grab in another page
-        console.log(csvDataDragAndDrop);
+        //console.log(csvDataDragAndDrop);
+
+        // var data = csvJSON(csvDataDragAndDrop);
+        // var xhr = new XMLHttpRequest();
+        // xhr.open("POST", 'http://localhost:8000/datasets', true);
+        // xhr.setRequestHeader('Content-Type', 'application/json');
+        // xhr.send(data);
     };
 
 } //End of updateThumbnail
@@ -81,3 +87,25 @@ async function button() {
     localStorage.setItem("csvData:fileHandler.js", csvDataFilePicker);
     console.log(csvDataFilePicker);
 }
+
+//var csv is the CSV file with headers
+function csvJSON(csv){
+    var lines=csv.split("\n");
+    var result = [];
+    var headers=lines[0].split(",");
+  
+    for(var i=1;i<lines.length;i++){
+  
+        var obj = {};
+        var currentline=lines[i].split(",");
+  
+        for(var j=0;j<headers.length;j++){
+            obj[headers[j]] = currentline[j];
+        }
+        result.push(obj);
+    }
+    console.log(result);
+
+    //return result; //JavaScript object
+    return JSON.stringify(result); //JSON
+  }

@@ -5,25 +5,123 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.min.js"></script>
     <link href="css/styles.css" rel="stylesheet" type="text/css" />
     <title>Look at Old Data</title>
 </head>
 
 <body>
     <div id="oldData">
-        <h1> view some old data stuff </h1>
+        <h1> UNDER CONSTRUCTION! </h1>
 
         <nav id="topNav">
             <ul>
                 <li><a href="welcome.html">Home</a></li>
                 <li><a href="filePicker.html">Analyze Data</a></li>
-                <li><a class="active" href="oldDataView.html">Open Old Data</a></li>
-                <li><a href="oldHTML.html">Archived Page</a></li>
+                <li><a class="active" href="oldDataView.html">View Historical Data</a></li>
+                <!--<li><a href="oldHTML.html">Archived Page</a></li>-->
             </ul>
         </nav>
+        <h3>Select two historical data sets to retrieve based on flag values present in the local database:</h3>
+        <div id="checkBox">
+            <input type="checkbox" class="checkOption" name="option1">
+            <label for="option1">Test Flag 1</label><br>
 
+            <input type="checkbox" class="checkOption" name="option2">
+            <label for="option2">Test Flag 2</label><br>
+
+            <input type="checkbox" class="checkOption" name="option3">
+            <label for="option3">Test Flag 3</label><br>
+
+            <input type="checkbox" class="checkOption" name="option4">
+            <label for="option4">Test Flag 4</label>
+            <br>
+            <br>
+            <button type="submit">Retrieve Data</button>
+        </div>
+
+        <button id="csvTest" onclick="parseCSV()">READ IN DATA</button>
+        <button id="showRaw" onclick="rawDataGraph()">Click to see Raw Data</button>
+        <button id="showAverage" onclick="drawAveragedGraph()">Click to average data</button>
+        <button id="showBaseline" onclick="drawGraphBaseLine()">Click for average with Baseline</button>
+        <button id="showMovingAverage" onclick="drawGraphMovingAverage()">Click for Moving Average with Baseline</button>
+
+        <div id="displayData">
+            <div id="rawGraph">
+                <svg id="graphRaw" width="800" height="700"></svg>
+                <br>
+                <p>The first step of data processing is to extract the epochs for all the trials
+                    that go with each condition: 36 of the target stimulus ("oddball") and 144 of the standard. <br>
+                    Then we
+                    overlay them so that each timepoint relative to the stimulus onset time of zero (0), we can see that
+                    they are very noisy, with no two being identical</p>
+            </div>
+
+            <div id="averagedGraph">
+                <svg id="graph" width="800" height="700"></svg>
+                <br>
+                <p>Now we add up the voltages measured at each timepoint in each of the trials
+                    that
+                    goes with each condition, and take their average value, and then plot the averaged values. <br> This
+                    results
+                    in the first-pass averaged function, and there is one for each condition. These two functions should
+                    give us a rough idea of how good our results look <br> (compared to what you see in papers on this
+                    ERP, the
+                    P300)</p>
+                <br>
+
+                <button id="makeRect" onclick="compareRawToAveraged()">Compare to Raw Data</button>
+                <button id="makeRect" onclick="clearGraphAveraged()">Clear Graph</button>
+                <button id="makeRect" onclick="drawAveragedGraph()">Redraw Graph</button>
+            </div>
+
+            <div id="baselineGraph">
+                <svg id="graph2" width="800" height="700"></svg>
+                <br>
+                <p class="spanBaselineCorrected">Next we take the averaged functions, and determine how far off of
+                    the
+                    zero-voltage line each is in the time window PRIOR TO the onset of the stimulus (time point zero).
+                    <br> We
+                    calculate the average deviation from zero for each of the two conditions, and then substract that
+                    value
+                    from all the values of the function. <br> This makes it so the two functions (oddball and standard)
+                    are
+                    registered (overlay each other) in the baseline, and ensures that any differences we see after the
+                    stimulus onset <br> are indicative of differences in the way the brain processes the two
+                    stimuli</p>
+                <br>
+                <button id="makeRect" onclick="compareAveragedToBaseline()">Compare to Averaged Data</button>
+                <button id="makeRect" onclick="clearGraphBaseline()">Clear Graph</button>
+                <button id="makeRect" onclick="drawGraphBaseLine()">Redraw Graph</button>
+            </div>
+            <div id="movingAverageGraph">
+                <svg id="graph3" width="800" height="700"></svg>
+                <br>
+                <p>Finally we make one more pass over the functions, in order to smooth them a
+                    little bit more. In this averaging pass, we compare the values of all the time points around each
+                    individual time point <br> and computer their average, and take this as the new value of the that
+                    time
+                    point. This is called moving window averaging, and is a standard method of post-processing noisy
+                    time
+                    series data like we have here. <br> However, the choice of how wide of a window to average is
+                    important. Here
+                    we have selected a 20 msec window, where the time point is averaged with the two that precede it and
+                    the
+                    two that follow it.</p>
+                <br>
+                <button id="makeRect" onclick="compareSmaToBaseline()">Compare to Baseline</button>
+                <button id="makeRect" onclick="clearGraphSMA()">Clear Graph</button>
+                <button id="makeRect" onclick="drawGraphMovingAverage()">Redraw Graph</button>
+            </div>
+        </div>
     </div>
+
+    <script src="d3.js"></script>
+    <script src="js/fileHandler.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <script src="js/styles.js"></script>
 </body>
 
 </html>
