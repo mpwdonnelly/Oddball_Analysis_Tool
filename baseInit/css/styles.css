@@ -1,0 +1,229 @@
+/********************************************/
+/*** Mobile first - default CSS will apply to 
+  devices whose viewport is 767px or less ***/
+/********************************************/
+
+
+/********************************************/
+/************** FILE PICKER CSS *************/
+/********************************************/
+.drop-zone {
+    max-width: 200px;
+    height: 190px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    cursor: pointer;
+    color: #ccc;
+    border: 4px dashed #8D918D;
+    border-radius: 10px;
+}
+
+.drop-zone-over {
+    border-style: dotted;
+}
+
+.drop-zone_input {
+    display: none;
+}
+
+.drop-zone_thumbnail {
+    width: 95%;
+    height: 95%;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #8D918D;
+    background-size: cover;
+    position: relative;
+}
+
+.drop-zone_thumbnail::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 5px 0;
+    color: #FAEBD7;
+    background: rgba(0, 0, 0, 0.75);
+    font-size: 14px;
+    text-align: center;
+}
+
+#displayData p {
+    display: none;
+}
+
+
+/********************************************/
+/************ WELCOME PAGE CSS **************/
+/********************************************/
+
+#welcome h2 {
+    text-align: center;
+}
+
+#welcome p {
+    width: auto;
+    max-width: 50em;
+    text-align: center;
+    
+}
+
+#proccessInfo p:nth-last-child(2) {
+    font-weight: bold;
+    background: yellow;
+  }
+
+  #analyzeData ol {
+      text-align: center;
+      max-width: 50em;
+      list-style-position: inside;
+  }
+
+/********************************************/
+/************* NAVIGATION CSS *************/
+/********************************************/
+
+#topNav {
+    text-align: center;
+}
+
+#topNav ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+#topNav li {
+    text-align: center;
+    border-bottom: 1px solid #bbb;
+}
+
+#topNav li:last-child {
+    border-bottom: none;
+}
+
+#topNav li a {
+    display: block;
+    color: #FFF;
+    padding: 8px;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#topNav li a:hover {
+    background-color: #111;
+}
+
+.active {
+    background-color: #04AA6D;
+}
+
+
+/********************************************/
+/************* SPLASH PAGE CSS **************/
+/********************************************/
+
+#splash h1 {
+    color: #000;
+    text-align: center;
+
+    margin: 300px 123px 0px;
+    font-size: 48px;
+
+}
+
+#splash h1:hover {
+    color: #3A3B3C;
+    cursor: pointer;
+}
+
+/***************************************************/
+/******  Break point for standard tablet size ******/
+/***************************************************/
+@media screen and (min-width: 50rem) {
+    #splash h1 {
+        font-size: 64px;
+        margin: 300px 267px 0px;
+
+    }
+    
+    #topNav li {
+        float: left;
+        border-bottom: none;
+        border-right: 1px solid #bbb;  
+    }
+    
+    #topNav li:last-child {
+        border-right: none;
+    }
+
+/********************************************/
+/************ WELCOME PAGE CSS **************/
+/********************************************/
+
+#welcome h2 {
+    max-width:55rem;
+    text-align: center;
+}
+
+#welcome p {
+    max-width:55rem;
+    text-align: left;
+    
+}
+
+#proccessInfo p:nth-last-child(2) {
+    text-align: center;
+    font-weight: bold;
+    background: yellow;
+  }
+    
+
+}/*End of tablet size breakpoint */
+
+
+/***************************************************/
+/****** Break point for standard desktop size ******/
+/***************************************************/
+@media screen and (min-width: 63rem) {
+
+    #splash h1 {
+        font-size: 72px;
+        margin: 300px 355px 0px;
+    }
+
+    #welcome h2 {
+        max-width:none;
+        text-align: left;
+    }
+    
+    #welcome p {
+        max-width:70rem;
+        text-align: left;
+        
+    }
+    
+    #proccessInfo p:nth-last-child(2) {
+        font-weight: bold;
+        max-width:20rem;
+        padding-left: 5rem;
+        background: yellow;
+      }
+
+      #analyzeData ol {
+        text-align: left;
+    }
+
+    
+    
+
+} /*End of desktop size breakpoint */
