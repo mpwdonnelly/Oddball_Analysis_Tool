@@ -65,11 +65,11 @@ function updateThumbnail(dropZoneElement, file) {
         localStorage.setItem("csvData:fileHandler.js", csvDataDragAndDrop); // Store the csv String in local storage to grab in another page
         //console.log(csvDataDragAndDrop);
 
-        var data = csvJSON(csvDataDragAndDrop);
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", 'http://localhost:8000/datasets', true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send(data);
+        // var data = csvJSON(csvDataDragAndDrop);
+        // var xhr = new XMLHttpRequest();
+        // xhr.open("POST", 'http://localhost:8000/datasets', true);
+        // xhr.setRequestHeader('Content-Type', 'application/json');
+        // xhr.send(data);
     };
 
 } //End of updateThumbnail
