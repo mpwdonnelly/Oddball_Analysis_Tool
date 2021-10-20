@@ -36,11 +36,31 @@
         <button id="makeRect" onclick="drawAveragedGraph()">Click to average data</button>
         <button id="makeRect" onclick="drawGraphBaseLine()">Click for average with Baseline</button>
         <button id="makeRect" onclick="drawGraphMovingAverage()">Click for Moving Average with Baseline</button>
+        
         <p></p>
-        <svg id="graphRaw" width="800" height="700"></svg>
-        <svg id="graph" width="800" height="700"></svg>
-        <svg id="graph2" width="800" height="700"></svg>
-        <svg id="graph3" width="800" height="700"></svg>
+
+        <div id="rawGraph">
+            <svg id="graphRaw" width="800" height="700"></svg>
+        </div>
+        <div id="averagedGraph">
+            <svg id="graph" width="800" height="700"></svg>
+            <button id="makeRect" onclick="compareRawToAveraged()">Compare to Raw Data</button>
+            <button id="makeRect" onclick="clearGraphAveraged()">Clear Graph</button>
+            <button id="makeRect" onclick="drawAveragedGraph()">Redraw Graph</button>
+        </div>
+        <div id="baselineGraph">
+            <svg id="graph2" width="800" height="700"></svg>
+            <button id="makeRect" onclick="compareAveragedToBaseline()">Compare to Averaged Data</button>
+            <button id="makeRect" onclick="clearGraphBaseline()">Clear Graph</button>
+            <button id="makeRect" onclick="drawGraphBaseLine()">Redraw Graph</button>
+        </div>
+        <div id="movingAverageGraph">
+            <svg id="graph3" width="800" height="700"></svg>
+            <button id="makeRect" onclick="compareSmaToBaseline()">Compare to Baseline</button>
+            <button id="makeRect" onclick="clearGraphSMA()">Clear Graph</button>
+            <button id="makeRect" onclick="drawGraphMovingAverage()">Redraw Graph</button>
+        </div>
+        
 
     </div>
     <script src="d3.js"></script>

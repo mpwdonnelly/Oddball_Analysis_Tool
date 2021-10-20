@@ -363,8 +363,326 @@ function dataSmoothing(regularEpochsToSmooth, oddballEpochsToSmooth) {
     
 }
 
+// function clearGraphRaw() {
+//     var svg = d3.select("#graphRaw");
+//     svg.selectAll("*").remove();
+// }
+
+// function clearGraphAveraged() {
+//     var svg = d3.select("#graphRaw");
+//     svg.selectAll("*").remove();
+// }
+
+function compareRawToAveraged() {
+    var svg = d3.select("#graph"), margin = 200, width = svg.attr("width") - margin, //600
+        height = svg.attr("height") - margin; //500
+
+
+    // Step 4 
+    var xScale = d3.scaleLinear().domain([d3.min(xRawMinMax), d3.max(xRawMinMax)]).range([0, width]), yScale = d3.scaleLinear().domain([d3.min(yRawMinMax), d3.max(yRawMinMax)]).range([height, 0]);
+
+    var g = svg.append("g")
+        .attr("transform", "translate(" + 100 + "," + 100 + ")");
+    
+
+    // Step 5
+    // Title
+    // svg.append('text')
+    //     .attr('x', width / 2 + 100)
+    //     .attr('y', 100)
+    //     .attr('text-anchor', 'middle')
+    //     .style('font-family', 'Helvetica')
+    //     .style('font-size', 20)
+    //     .text('Raw Data');
+
+    // // X label
+    // svg.append('text')
+    //     .attr('x', width / 2 + 100)
+    //     .attr('y', height - 15 + 150)
+    //     .attr('text-anchor', 'middle')
+    //     .style('font-family', 'Helvetica')
+    //     .style('font-size', 12)
+    //     .text('Time (ms)');
+
+    // // Y label
+    // svg.append('text')
+    //     .attr('text-anchor', 'middle')
+    //     .attr('transform', 'translate(60,' + height + ')rotate(-90)')
+    //     .style('font-family', 'Helvetica')
+    //     .style('font-size', 12)
+    //     .text('Amplitude (Microvolts)');
+
+    // Step 6
+    // g.append("g")
+    //     .attr("transform", "translate(0," + height + ")")
+    //     .call(d3.axisBottom(xScale));
+
+    // g.append("g")
+    //     .call(d3.axisLeft(yScale));
+
+    
+
+    //Step 7
+    // svg.append('g')
+    //     .selectAll("dot")
+    //     .data(oddballEpochs)
+    //     .enter()
+    //     .append("circle")
+    //     .attr("cx", function (d) { return xScale(d[0]); })
+    //     .attr("cy", function (d) { return yScale(d[1]); })
+    //     .attr("r", 3)
+    //     .attr("transform", "translate(" + 100 + "," + 100 + ")")
+    //     .style("fill", "#CC0000");
+    // // Dots for oddball trial data
+    // svg.append('g')
+    //     .selectAll("dot")
+    //     .data(regularEpochs)
+    //     .enter()
+    //     .append("circle")
+    //     .attr("cx", function (d) { return xScale(d[0]); })
+    //     .attr("cy", function (d) { return yScale(d[1]); })
+    //     .attr("r", 3)
+    //     .attr("transform", "translate(" + 100 + "," + 100 + ")")
+    //     .style("fill", "#0000FF");
+
+    // Step 8        
+    var line = d3.line()
+        .x(function (d) { return xScale(d[0]); })
+        .y(function (d) { return yScale(d[1]); })
+        .curve(d3.curveMonotoneX);
+
+    svg.append("path")
+        .datum(regularRawGraphData)
+        .attr("class", "line")
+        .attr("transform", "translate(" + 100 + "," + 100 + ")")
+        .attr("d", line)
+        .style("fill", "none")
+        .style("stroke", "#7777AA")
+        .style("stroke-width", "1");
+    //Line for oddball trial data
+    svg.append("path")
+        .datum(oddballRawGraphData)
+        .attr("class", "line")
+        .attr("transform", "translate(" + 100 + "," + 100 + ")")
+        .attr("d", line)
+        .style("fill", "none")
+        .style("stroke", "#AA7777")
+        .style("stroke-width", "1");
+}
+
+function compareSmaToBaseline() {
+    var svg = d3.select("#graph3"), margin = 200, width = svg.attr("width") - margin, //600
+        height = svg.attr("height") - margin; //500
+
+
+    // Step 4 
+    var xScale = d3.scaleLinear().domain([d3.min(xBcAvgMinMax), d3.max(xBcAvgMinMax)]).range([0, width]), yScale = d3.scaleLinear().domain([d3.min(yBcAvgMinMax), d3.max(yBcAvgMinMax)]).range([height, 0]);
+
+    var g = svg.append("g")
+        .attr("transform", "translate(" + 100 + "," + 100 + ")");
+    
+
+    // Step 5
+    // Title
+    // svg.append('text')
+    //     .attr('x', width / 2 + 100)
+    //     .attr('y', 100)
+    //     .attr('text-anchor', 'middle')
+    //     .style('font-family', 'Helvetica')
+    //     .style('font-size', 20)
+    //     .text('Averaged Data w/Baseline');
+
+    // X label
+    // svg.append('text')
+    //     .attr('x', width / 2 + 100)
+    //     .attr('y', height - 15 + 150)
+    //     .attr('text-anchor', 'middle')
+    //     .style('font-family', 'Helvetica')
+    //     .style('font-size', 12)
+    //     .text('Time (ms)');
+
+    // Y label
+    // svg.append('text')
+    //     .attr('text-anchor', 'middle')
+    //     .attr('transform', 'translate(60,' + height + ')rotate(-90)')
+    //     .style('font-family', 'Helvetica')
+    //     .style('font-size', 12)
+    //     .text('Amplitude (Microvolts)');
+
+    // Step 6
+    g.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(xScale));
+
+    g.append("g")
+        .call(d3.axisLeft(yScale));
+
+    
+
+    //Step 7
+    // svg.append('g')
+    //     .selectAll("dot")
+    //     .data(oddballEpochs)
+    //     .enter()
+    //     .append("circle")
+    //     .attr("cx", function (d) { return xScale(d[0]); })
+    //     .attr("cy", function (d) { return yScale(d[1]); })
+    //     .attr("r", 3)
+    //     .attr("transform", "translate(" + 100 + "," + 100 + ")")
+    //     .style("fill", "#CC0000");
+    // // Dots for oddball trial data
+    // svg.append('g')
+    //     .selectAll("dot")
+    //     .data(regularEpochs)
+    //     .enter()
+    //     .append("circle")
+    //     .attr("cx", function (d) { return xScale(d[0]); })
+    //     .attr("cy", function (d) { return yScale(d[1]); })
+    //     .attr("r", 3)
+    //     .attr("transform", "translate(" + 100 + "," + 100 + ")")
+    //     .style("fill", "#0000FF");
+
+    // Step 8        
+    var line = d3.line()
+        .x(function (d) { return xScale(d[0]); })
+        .y(function (d) { return yScale(d[1]); })
+        .curve(d3.curveMonotoneX);
+
+    svg.append("path")
+        .datum(bcRegular)
+        .attr("class", "line")
+        .attr("transform", "translate(" + 100 + "," + 100 + ")")
+        .attr("d", line)
+        .style("fill", "none")
+        .style("stroke", "#7777AA")
+        .style("stroke-width", "2");
+    //Line for oddball trial data
+    svg.append("path")
+        .datum(bcOddball)
+        .attr("class", "line")
+        .attr("transform", "translate(" + 100 + "," + 100 + ")")
+        .attr("d", line)
+        .style("fill", "none")
+        .style("stroke", "#AA7777")
+        .style("stroke-width", "2");
+}
+
+function compareAveragedToBaseline() {
+    var svg = d3.select("#graph2"), margin = 200, width = svg.attr("width") - margin, //600
+        height = svg.attr("height") - margin; //500
+
+
+    // Step 4 
+    var xScale = d3.scaleLinear().domain([d3.min(xBcAvgMinMax), d3.max(xBcAvgMinMax)]).range([0, width]), yScale = d3.scaleLinear().domain([d3.min(yBcAvgMinMax), d3.max(yBcAvgMinMax)]).range([height, 0]);
+
+    var g = svg.append("g")
+        .attr("transform", "translate(" + 100 + "," + 100 + ")");
+    
+
+    // Step 5
+    // Title
+    // svg.append('text')
+    //     .attr('x', width / 2 + 100)
+    //     .attr('y', 100)
+    //     .attr('text-anchor', 'middle')
+    //     .style('font-family', 'Helvetica')
+    //     .style('font-size', 20)
+    //     .text('Averaged Data');
+
+    // X label
+    // svg.append('text')
+    //     .attr('x', width / 2 + 100)
+    //     .attr('y', height - 15 + 150)
+    //     .attr('text-anchor', 'middle')
+    //     .style('font-family', 'Helvetica')
+    //     .style('font-size', 12)
+    //     .text('Time (ms)');
+
+    // Y label
+    // svg.append('text')
+    //     .attr('text-anchor', 'middle')
+    //     .attr('transform', 'translate(60,' + height + ')rotate(-90)')
+    //     .style('font-family', 'Helvetica')
+    //     .style('font-size', 12)
+    //     .text('Amplitude (Microvolts)');
+
+    //Step 6
+    // g.append("g")
+    //     .attr("transform", "translate(0," + height + ")")
+    //     .call(d3.axisBottom(xScale));
+
+    // g.append("g")
+    //     .call(d3.axisLeft(yScale));
+
+    
+
+    //Step 7
+    // svg.append('g')
+    //     .selectAll("dot")
+    //     .data(oddballEpochs)
+    //     .enter()
+    //     .append("circle")
+    //     .attr("cx", function (d) { return xScale(d[0]); })
+    //     .attr("cy", function (d) { return yScale(d[1]); })
+    //     .attr("r", 3)
+    //     .attr("transform", "translate(" + 100 + "," + 100 + ")")
+    //     .style("fill", "#CC0000");
+    // // Dots for oddball trial data
+    // svg.append('g')
+    //     .selectAll("dot")
+    //     .data(regularEpochs)
+    //     .enter()
+    //     .append("circle")
+    //     .attr("cx", function (d) { return xScale(d[0]); })
+    //     .attr("cy", function (d) { return yScale(d[1]); })
+    //     .attr("r", 3)
+    //     .attr("transform", "translate(" + 100 + "," + 100 + ")")
+    //     .style("fill", "#0000FF");
+
+    // Step 8        
+    var line = d3.line()
+        .x(function (d) { return xScale(d[0]); })
+        .y(function (d) { return yScale(d[1]); })
+        .curve(d3.curveMonotoneX);
+
+    svg.append("path")
+        .datum(regularEpochs)
+        .attr("class", "line")
+        .attr("transform", "translate(" + 100 + "," + 100 + ")")
+        .attr("d", line)
+        .style("fill", "none")
+        .style("stroke", "#7777AA")
+        .style("stroke-width", "2");
+    // Line for oddball trial data
+    svg.append("path")
+        .datum(oddballEpochs)
+        .attr("class", "line")
+        .attr("transform", "translate(" + 100 + "," + 100 + ")")
+        .attr("d", line)
+        .style("fill", "none")
+        .style("stroke", "#AA7777")
+        .style("stroke-width", "2");
+    
+    console.log(regularEpochs);
+}
+
+function clearGraphBaseline() {
+    var svg = d3.select("#graph2");
+    svg.selectAll("*").remove();
+}
+
+function clearGraphSMA() {
+    var svg = d3.select("#graph3");
+    svg.selectAll("*").remove();
+}
+
+function clearGraphAveraged() {
+    var svg = d3.select("#graph");
+    svg.selectAll("*").remove();
+}
+
 function rawDataGraph() {
-    averageDataDrawFirstGraph();
+    
     var svg = d3.select("#graphRaw"), margin = 200, width = svg.attr("width") - margin, //600
         height = svg.attr("height") - margin; //500
 
@@ -448,8 +766,8 @@ function rawDataGraph() {
         .attr("transform", "translate(" + 100 + "," + 100 + ")")
         .attr("d", line)
         .style("fill", "none")
-        .style("stroke", "#0000FF")
-        .style("stroke-width", "2");
+        .style("stroke", "#7777AA")
+        .style("stroke-width", "1");
     //Line for oddball trial data
     svg.append("path")
         .datum(oddballRawGraphData)
@@ -457,8 +775,8 @@ function rawDataGraph() {
         .attr("transform", "translate(" + 100 + "," + 100 + ")")
         .attr("d", line)
         .style("fill", "none")
-        .style("stroke", "#CC0000")
-        .style("stroke-width", "2");
+        .style("stroke", "#AA7777")
+        .style("stroke-width", "1");
     
     
 }
@@ -765,6 +1083,7 @@ function parseCSV() {
 
     // Use d3.csvParse to parse the uploadedCsvData String to put into arrays for maindataset
     mainDataset = d3.csvParse(uploadedCsvData);
+    averageDataDrawFirstGraph();
     
 
 }
