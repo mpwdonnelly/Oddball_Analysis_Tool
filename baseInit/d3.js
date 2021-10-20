@@ -16,7 +16,7 @@ var mainDataset = [];                                                  // String
 var yValArrayMaxMin = [];     // X axis data to dynamically scale the x axis
 var xValArrayMaxMin = []     // Y axis data to dynamically scale the y axis
 
-var timePoint = 0.0;     // Variable for giving time values to data
+var timePoint = -200;     // Variable for giving time values to data
 var regularTrialRows = [];  // Rows of regular stimulus data
 var oddballTrialRows = [];  // Rows of oddball stimulus data
 var regularRawGraphData = [];
@@ -109,7 +109,7 @@ function averageDataDrawFirstGraph() {
 
             case "0":
                 oddBallAvgFlag = false;  // Set flag to false to reset for when we come across another oddball trial
-                timePoint = 0;  // Reset timePoint to 0 to keep each trial and their data on the same time window, in order to average accurately
+                timePoint = -200;  // Reset timePoint to 0 to keep each trial and their data on the same time window, in order to average accurately
                 break;  // Break out of current case to see if we are still not in a trial
             default:
                 break;
