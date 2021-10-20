@@ -22,7 +22,7 @@
                 <!--<li><a href="oldHTML.html">Archived Page</a></li>-->
             </ul>
         </nav>
-        <h3>Select two historical data sets to retrieve based on flag values present in the local database:</h3>
+        <h3>Select up to two historical data sets to retrieve based on flag values present in the local database:</h3>
         <div id="checkBox">
             <input type="checkbox" class="checkOption" name="option1">
             <label for="option1">Test Flag 1</label><br>
@@ -37,7 +37,8 @@
             <label for="option4">Test Flag 4</label>
             <br>
             <br>
-            <button type="submit">Retrieve Data</button>
+            <button id="getFlagsButton">View Flags in Database</button>
+            <button id="getFlagData">Retrieve Data</button>
         </div>
 
         <button id="csvTest" onclick="parseCSV()">READ IN DATA</button>

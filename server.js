@@ -22,7 +22,7 @@ const port = process.env.PORT || "8000";
  app.use(express.static(__dirname + '/baseInit'));
 
 // link the routes
-require("./app/routes/customer.routes.js")(app);
+require("./app/routes/data.routes.js")(app);
 
 // set port, listen for requests
 app.listen(8000, () => {
